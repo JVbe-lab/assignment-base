@@ -16,10 +16,10 @@ then
 	exit 1
 fi	
 
-if [ -d "$filesdir" ]
+if [ ! -d "$filesdir" ]
 then
 	echo "$filesdir is not represent a directory on the filesystem"
-	#exit 1
+	exit 1
 fi
 
 
@@ -28,8 +28,8 @@ if [ -d $filesdir ]
 then
 	#echo "File found in dir $filesdir"
 	#echo "$(ls)" 
-	echo "Number of files in directory $filesdir: $(ls -1r $filesdir | wc -l)" 
-	echo "Search string found in:  $(ls -lr $filesdir | grep 
+	echo "Number of files in directory $filesdir: $(ls -1r $filesdir | wc -l)"
+	echo "Search string found in:  $(ls -lr $filesdir | grep $searchstr)"
 	exit 0
 else
 	echo "File not found"
