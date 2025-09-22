@@ -22,16 +22,11 @@ then
 	exit 1
 fi
 
-
-
 if [ -d $filesdir ]
 then
-	#echo "File found in dir $filesdir"
-	#echo "$(ls)" 
-	echo "Number of files in directory $filesdir: $(ls -1r $filesdir | wc -l)"
-	echo "Search string found in:  $(ls -lr $filesdir | grep $searchstr . -R | wc -l)"
+	echo "Number of files found in dir & subdir's '$filesdir': $(find $filesdir/. -type f  | wc -l)"
+	echo "Search string '$searchstr' found in:  $(ls -lr $filesdir | grep $searchstr . -R | wc -l)"
 	exit 0
-	# xargs -0 grep -l "some string"
 else
 	echo "File not found"
 	exit 1
